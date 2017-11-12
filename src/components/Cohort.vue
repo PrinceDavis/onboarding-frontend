@@ -16,7 +16,7 @@ export default {
         },
         xAxis: {
           categories: [
-            'Create Account', 'Activate Account', 'Profile Infomation', 'Interest', 'Has Exprience', 'A Freelancer', 'Waiting Approval', 'Approved']
+            '0', 'Create Account', 'Activate Account', 'Profile Infomation', 'Interest', 'Has Exprience', 'A Freelancer', 'Waiting Approval', 'Approved']
         },
         yAxis: {
           title: {
@@ -44,10 +44,10 @@ export default {
     this.fetch()
       .then(data => {
         this.options.series = [
-          { name: 'Week1 Cohort', data: this.cohorts.week1 },
-          { name: 'Week2 Cohort', data: this.cohorts.week2 },
-          { name: 'Week3 Cohort', data: this.cohorts.week3 },
-          { name: 'Week4 Cohort', data: this.cohorts.week4 }
+          { name: 'Week1 Cohort', data: [100].concat(this.cohorts.week1) },
+          { name: 'Week2 Cohort', data: [100].concat(this.cohorts.week2) },
+          { name: 'Week3 Cohort', data: [100].concat(this.cohorts.week3) },
+          { name: 'Week4 Cohort', data: [100].concat(this.cohorts.week4) }
         ]
       })
       .catch(err => {
