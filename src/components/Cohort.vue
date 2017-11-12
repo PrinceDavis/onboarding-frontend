@@ -10,19 +10,55 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      options: {}
+      options: {
+        title: {
+          text: 'Temper User Onboarding flow'
+        },
+        xAxis: {
+          categories: [
+            'Create Account', 'Activate Account', 'Profile Infomation', 'Interest', 'Has Exprience', 'A Freelancer', 'Waiting Approval', 'Approved']
+        },
+        yAxis: {
+          title: {
+            text: 'Percentage of user'
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticlalAlign: 'middle'
+        },
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false
+            }
+          }
+        },
+        series: []
+      }
     }
   },
 
   beforeMount () {
-    this.fetch().then(data => {
-      console.log(data)
-    }).catch(err => console.log(err))
+    this.fetch()
+      .then(data => {
+        this.options.series = [
+          { name: 'Week1 Cohort', data: this.cohorts.week1 },
+          { name: 'Week2 Cohort', data: this.cohorts.week2 },
+          { name: 'Week3 Cohort', data: this.cohorts.week3 },
+          { name: 'Week4 Cohort', data: this.cohorts.week4 }
+        ]
+      })
+      .catch(err => {
+        console.log(err)
+        alert('Can not fetch data at the moment!')
+      })
   },
 
   computed: {
     ...mapGetters({
-      all: 'cohort/all'
+      cohorts: 'cohort/all'
     })
   },
 

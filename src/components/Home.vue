@@ -1,12 +1,10 @@
 <template>
   <div>
       <cohort/>
-      <lines/>
   </div>
 </template>
 
 <script>
-import Lines from './Lines'
 import Cohort from './Cohort'
 export default {
   data () {
@@ -15,7 +13,6 @@ export default {
     }
   },
   components: {
-    Lines,
     Cohort
   }
 }
